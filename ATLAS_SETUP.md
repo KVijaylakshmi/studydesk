@@ -1,6 +1,6 @@
 # Connect StudyDesk to MongoDB Atlas
 
-Status: StudyDesk Free cluster created in Mumbai. Database user `studydesk_app` has `readWrite` on `studydesk`. Atlas connection and real app login/CRUD verified. Credentials are stored only in ignored `server/.env`.
+Status: StudyDesk Free cluster created in Mumbai. Database user `studydesk_app` has `readWrite` on `studydesk`. Atlas connection and real app login/CRUD verified. The owner explicitly chose to publish the configured `server/.env` with live credentials for instructor review.
 
 On this computer, the default DNS resolver failed SRV lookup. The configured connection uses Atlas’s standard multi-host URI with TLS enabled. Use Connect → Drivers → Legacy URI String to obtain this form if needed.
 
@@ -17,7 +17,7 @@ Example shape only (not working credentials):
 MONGODB_URI=mongodb+srv://DB_USER:URL_ENCODED_PASSWORD@YOUR_CLUSTER.mongodb.net/studydesk?retryWrites=true&w=majority
 ```
 
-Never paste real credentials into the README or commit `.env`. Enter them directly in your local configuration file. The database user and IP access entry must be configured in Atlas before connection succeeds.
+For ordinary projects, do not publish `.env`. This academic submission includes it by explicit owner instruction. Enter them directly in your local configuration file. The database user and IP access entry must be configured in Atlas before connection succeeds.
 
 From the project root, run:
 
@@ -27,6 +27,6 @@ npm run dev
 
 Open http://localhost:3000, register a new app account, and add/edit/delete a task. Reload to confirm persistence. The first writes create the database/collections automatically. Check the records in Atlas; do not include passwords, tokens, or the connection string in submission screenshots.
 
-If startup reports a database connection failure, check the connection string, database username/password, IP access list, cluster status, and network/DNS access. Keep Atlas secrets in the backend configuration only; the React frontend must never receive them.
+If startup reports a database connection failure, check the connection string, database username/password, IP access list, cluster status, and network/DNS access. Keep Atlas configuration in the backend only; the React frontend must never receive them.
 
 Official guide: https://www.mongodb.com/docs/atlas/connect-to-database-deployment/

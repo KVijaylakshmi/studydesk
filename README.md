@@ -28,11 +28,12 @@ Open PowerShell in this folder:
 
 ```powershell
 npm install
-Copy-Item server/.env.example server/.env
+ # For your own configuration only (overwrites the provided settings):
+# Copy-Item server/.env.example server/.env
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 
-Edit `server/.env`: paste the generated value as `JWT_SECRET` and set `MONGODB_URI`. Do not leave the example secret. For Atlas, use your database user's connection string, allow your IP in Atlas Network Access, and URL-encode special characters in the database password. Use `studydesk` as the database name. Optional local alternative: `mongodb://127.0.0.1:27017/studydesk`, with your MongoDB service running. Never commit `.env` or share credentials in screenshots.
+Edit `server/.env`: paste the generated value as `JWT_SECRET` and set `MONGODB_URI`. Do not leave the example secret. For Atlas, use your database user's connection string, allow your IP in Atlas Network Access, and URL-encode special characters in the database password. Use `studydesk` as the database name. Optional local alternative: `mongodb://127.0.0.1:27017/studydesk`, with your MongoDB service running. For personal projects, keep `.env` private. This academic submission includes it by the project owner’s explicit choice.
 
 ```powershell
 npm run dev
@@ -109,10 +110,11 @@ To download and run your own copy:
 git clone https://github.com/KVijaylakshmi/studydesk.git
 cd studydesk
 npm install
-Copy-Item server/.env.example server/.env
+ # For your own configuration only (overwrites the provided settings):
+# Copy-Item server/.env.example server/.env
 ```
 
-Configure your own MongoDB connection and generated JWT secret using the setup steps above, then run `npm run dev`. Real credentials, dependencies, and build output are excluded from Git. Include the repository link in your printed report.
+This submission includes a configured `server/.env`. To use it, skip copying `.env.example` over it and run `npm run dev`. Atlas must allow your public IP; request access from the project owner, or replace the connection and JWT secret with your own using the setup steps above. The project owner explicitly chose to include `server/.env` with live credentials in this public academic submission. Dependencies and build output are excluded from Git. Include the repository link in your printed report.
 
 ## Troubleshooting
 
@@ -126,7 +128,7 @@ Configure your own MongoDB connection and generated JWT secret using the setup s
 
 Frontend production build and all three automated tests passed. MongoDB Atlas is connected to the StudyDesk Free cluster in Mumbai. Real registration, correct login, wrong-password rejection, and task create/update/read-after-fresh-login/delete passed API checks. Successful browser login at http://localhost:3000 was also verified. Temporary verification tasks were removed. Cross-account ownership isolation and server-restart persistence remain manual checks.
 
-Register your own app account after connecting MongoDB. Database credentials and the local Atlas connection are stored only in ignored `server/.env`; no account password is included in this repository.
+Register your own app account after connecting MongoDB. The project owner explicitly authorized publishing the Atlas connection and JWT secret in `server/.env` for this academic submission. These values are public; do not reuse them for other projects.
 
 This computer could not resolve Atlas SRV records through its default DNS resolver. Its local configuration uses Atlas's standard multi-host URI with TLS enabled, `authSource=admin`, and the replica set supplied by Atlas. A fresh clone can use the SRV URI in `.env.example` if its DNS supports SRV lookups.
 
